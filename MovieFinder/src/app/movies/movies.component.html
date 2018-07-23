@@ -24,3 +24,29 @@
   </div>   
 </div>
 
+<div class="panel panel-default" *ngIf='forKids'>
+  <div class="panel-heading">
+      <h3 class="panel-title">Kids</h3>    
+  </div> 
+  <div class="panel-body">
+      <div class="row">
+          <div *ngFor="let movie of forKids; let i=index" class="col-md-2">
+            <app-movie *ngIf="i < 6" [movie]='movie'></app-movie>
+          </div>
+      </div>    
+  </div>   
+</div>
+
+<div class="panel panel-default" *ngIf='bestDramas'>
+  <div class="panel-heading">
+      <h3 class="panel-title">Best dramas</h3>    
+  </div> 
+  <div class="panel-body">
+      <div class="row">
+          <div *ngFor="let movie of bestDramas; let i=index" class="col-md-2">
+            <app-movie *ngIf="i < 6" [movie]='movie'></app-movie>
+          </div>
+      </div>    
+  </div>   
+</div>
+

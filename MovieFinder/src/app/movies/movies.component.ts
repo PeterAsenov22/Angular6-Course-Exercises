@@ -10,6 +10,8 @@ import { Movie } from '../models/Movie'
 export class MoviesComponent implements OnInit {
   public popular: Movie[]
   public inTheaters: Movie[]
+  public forKids: Movie[]
+  public bestDramas: Movie[]
 
   constructor(private moviesService: MoviesService) { }
 
@@ -24,6 +26,18 @@ export class MoviesComponent implements OnInit {
       .getInTheaters()
       .subscribe(data => {
         this.inTheaters = data.results
+      })
+
+      this.moviesService
+      .getPopularForKids()
+      .subscribe(data => {
+        this.forKids = data.results
+      })
+
+      this.moviesService
+      .getBestDramas()
+      .subscribe(data => {
+        this.bestDramas = data.results
       })
   }
 }

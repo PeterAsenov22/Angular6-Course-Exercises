@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
 import { HttpClientModule } from '@angular/common/http'
+import { AppRoutingModule } from './app-routing.module'
 
 import { AppComponent } from './app.component'
 import { MoviesComponent } from './movies/movies.component'
@@ -9,6 +10,7 @@ import { JumbotronComponent } from './jumbotron/jumbotron.component'
 import { MovieComponent } from './movie/movie.component'
 
 import {MoviesService} from './service/movies.service'
+import { MovieDetailsComponent } from './movie-details/movie-details.component'
 
 @NgModule({
   declarations: [
@@ -16,11 +18,13 @@ import {MoviesService} from './service/movies.service'
     MoviesComponent,
     NavbarComponent,
     JumbotronComponent,
-    MovieComponent
+    MovieComponent,
+    MovieDetailsComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [MoviesService],
   bootstrap: [AppComponent]
