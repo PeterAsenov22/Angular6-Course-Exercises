@@ -1,6 +1,6 @@
 # MovieFinder
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8. This project uses the TMDb API but is not endorsed or certified by TMDb.
 
 ## Development server
 
