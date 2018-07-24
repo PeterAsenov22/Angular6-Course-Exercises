@@ -11,6 +11,7 @@ export class MoviesService {
   private authentication: string = '&api_key='
   private movie: string = 'movie/'
   private movieAuth: string = '?api_key='
+  private search: string = 'search/movie?query='
   private popular: string = 'discover/movie?sort_by=popularity.desc'
   private inTheaters: string = 'discover/movie?primary_release_date.gte=2018-06-01&primary_release_date.lte=2018-07-23'
   private forKids: string = 'discover/movie?certification_country=US&certification.lte=G&sort_by=popularity.desc'
@@ -36,5 +37,9 @@ export class MoviesService {
 
   getMovieById (id): Observable<Movie> {
     return this.http.get<Movie>(`${this.path}${this.movie}${id}${this.movieAuth}${this.apiKey}`)
+  }
+
+  getMoviesByName (searchTerm) {
+    return this.http.get<Movies>(`${this.path}${this.search}${searchTerm}${this.authentication}${this.apiKey}`)
   }
 }

@@ -5,8 +5,8 @@
         <h1 class="display-3">Browse Our Movies</h1>
         <p class="lead">Search for a movie using the form below.</p>
         <hr class="my-4">
-        <form action="">
-          <input type="text" class="form-control">
+        <form #form='ngForm' (submit)='search(form.value)'>
+          <input type="text" class="form-control" name='search' ngModel>
           <div>
             <button class="btn btn-primary btn-lg" type="submit">Search</button>
           </div>
@@ -14,4 +14,20 @@
       </div>
     </div>
   </div>
+</div>
+
+<div class="panel panel-default" *ngIf='matched'>
+  <div class="panel-heading">
+    <h3 class="panel-title">Matched Movies</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row" *ngIf='matched.length > 0;else notFound'>
+      <div *ngFor="let movie of matched; let i=index" class="col-md-2">
+        <app-movie *ngIf="i < 6" [movie]='movie'></app-movie>
+      </div>
+    </div>
+  </div>
+  <ng-template #notFound>
+    <span>No movies found.</span>
+  </ng-template>
 </div>
