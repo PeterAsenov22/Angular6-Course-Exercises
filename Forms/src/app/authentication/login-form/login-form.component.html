@@ -1,3 +1,39 @@
-<p>
-  login-form works!
-</p>
+<div class="container">
+  <h1>Login Form</h1>
+  <div *ngIf="errMsg" class="alert alert-danger">
+      {{errMsg}}
+  </div>
+  <form #loginForm="ngForm" (ngSubmit)="login()">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input 
+        type="text" 
+        class="form-control" 
+        id="username"
+        name="username"
+        [(ngModel)]="model.username"
+        #username="ngModel"
+        pattern="^[A-Z][A-Za-z0-9]+$"
+        required >
+      <div [hidden]="username.valid || (username.pristine && username.untouched)" class="alert alert-danger">
+        Username must start with a capital letter and must contain only letters and digits.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input 
+        type="password" 
+        class="form-control" 
+        id="password"
+        name="password"
+        [(ngModel)]="model.password"
+        #password="ngModel"
+        pattern="^[A-Za-z0-9]{4,16}$"
+        required >
+      <div [hidden]="password.valid || (password.pristine && password.untouched)" class="alert alert-danger">
+        Password must contain only letters and digits and must be between 4 and 16 symbols.
+      </div>
+    </div>
+    <button type="submit" class="btn btn-success">Login</button>
+  </form>
+</div>

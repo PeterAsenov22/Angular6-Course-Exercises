@@ -6,17 +6,17 @@
 
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+      <li *ngIf="authService.checkIfLoggedIn()" class="nav-item active">
         <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
+      <li *ngIf="!authService.checkIfLoggedIn()" class="nav-item">
         <a class="nav-link" routerLink="/login">Login</a>
       </li>
-      <li class="nav-item">
+      <li *ngIf="!authService.checkIfLoggedIn()" class="nav-item">
         <a class="nav-link" routerLink="/register">Register</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" (click)="logout()">Logout</a>
+      <li *ngIf="authService.checkIfLoggedIn()" class="nav-item">
+        <a class="nav-link" href="javascript:void(0)" (click)="logout()">Logout</a>
       </li>
     </ul>
   </div>
