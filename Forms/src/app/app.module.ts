@@ -9,6 +9,7 @@ import { NavbarComponent } from './navbar/navbar.component'
 import { HomeComponent } from './home/home.component'
 
 import { AuthenticationService } from './authentication/authentication.service'
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,10 @@ import { AuthenticationService } from './authentication/authentication.service'
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [AuthenticationService],
+  providers: [
+    AuthenticationService,
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
