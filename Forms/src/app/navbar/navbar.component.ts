@@ -7,7 +7,7 @@ import { AuthenticationService } from '../authentication/authentication.service'
   templateUrl: './navbar.component.html'
 })
 export class NavbarComponent {
-  constructor (private authService: AuthenticationService, private router: Router) {
+  constructor (public authService: AuthenticationService, private router: Router) {
   }
 
   logout() {
