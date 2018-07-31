@@ -13,7 +13,7 @@
         <a class="nav-link" routerLink="/signup">Sign Up</a>
       </li>
       <li *ngIf="authService.isAuthenticated()" class="nav-item">
-        <a class="nav-link" (click)="logout()">Logout</a>
+        <a class="nav-link" (click)="logout()" href="javascript:void(0)">Logout</a>
       </li>
       <li (click)="expand()" [class]="dropdownLi">
         <a class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown"
