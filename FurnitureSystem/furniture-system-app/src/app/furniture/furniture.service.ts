@@ -5,7 +5,7 @@ import { CreateFurnitureModel } from './models/create-furniture.model'
 
 const createUrl = 'http://localhost:5000/furniture/create'
 const allUrl = 'http://localhost:5000/furniture/all'
-const myFurnitureUrl = 'http://localhost:5000/furniture/my'
+const myFurnitureUrl = 'http://localhost:5000/furniture/mine'
 const detailsUrl = 'http://localhost:5000/furniture/details/'
 const deleteUrl = 'http://localhost:5000/furniture/delete/'
 

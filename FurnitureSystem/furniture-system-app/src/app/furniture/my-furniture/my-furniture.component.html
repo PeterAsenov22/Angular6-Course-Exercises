@@ -1,20 +1,21 @@
 <div class="container">
   <div class="row space-top">
     <div class="col-md-12">
-      <h1>Welcome to Furniture System</h1>
-      <p>Select furniture from the catalog to view details.</p>
+      <h1>Profile Page</h1>
+      <p>Listing your furniture.</p>
     </div>
   </div>
   <div *ngIf='furnitures$ | async as furnitures'>
     <div *ngIf="furnitures.length > 0; else notFound" class="row space-top">
-      <div *ngFor="let furniture of furnitures" class="col-md-4">
+      <div *ngFor="let f of furnitures" class="col-md-4">
         <div class="card text-white bg-primary">
           <div class="card-body">
             <blockquote class="card-blockquote">
-              <img src="{{furniture.image}}" />
-              <p>{{furniture.description}}</p>
+              <img src="{{f.image}}" />
+              <p>{{f.description}}</p>
               <div class="pull-right">
-                <a routerLink="/furniture/details/{{furniture.id}}" class="btn btn-info">Details</a>
+                <a routerLink="/furniture/details/{{f.id}}" class="btn btn-info">Details</a>
+                <a (click)="deleteItem(f.id)" href="javascript:void(0)" class="btn btn-danger">Delete Item</a>
               </div>
             </blockquote>
           </div>
@@ -22,7 +23,7 @@
       </div>
     </div>
     <ng-template #notFound>
-        <span>Currently there are no existing furnitures.</span>
+        <span>You have not created any furnitures.</span>
     </ng-template>
   </div>
 </div>
