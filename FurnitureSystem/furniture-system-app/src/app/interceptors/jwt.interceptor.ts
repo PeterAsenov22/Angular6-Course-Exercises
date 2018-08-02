@@ -49,6 +49,11 @@ export class JWTInterceptor implements HttpInterceptor {
           this.toastr.success(res.body.message)
           this.router.navigate(['/signin'])
         }
+
+        if (res instanceof HttpResponse && res.body.success && req.url.endsWith('/furniture/create')) {
+          this.toastr.success(res.body.message)
+          this.router.navigate(['/furniture/all'])
+        }
       }))
   }
 
@@ -58,7 +63,7 @@ export class JWTInterceptor implements HttpInterceptor {
       this.authService.authtoken = authtoken
       localStorage.setItem('authtoken', authtoken)
       this.toastr.success(data.message)
-      this.router.navigate(['/home'])
+      this.router.navigate(['/furniture/all'])
     } else {
       this.toastr.error('Invalid token', 'Warning!')
     }

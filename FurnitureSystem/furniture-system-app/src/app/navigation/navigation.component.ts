@@ -11,7 +11,7 @@ export class NavigationComponent {
   dropdownMenu = 'dropdown-menu'
 
   constructor(
-    private authService: AuthService
+    public authService: AuthService
   ) { }
 
   logout() {

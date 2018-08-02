@@ -15,13 +15,13 @@
       <li *ngIf="authService.isAuthenticated()" class="nav-item">
         <a class="nav-link" (click)="logout()" href="javascript:void(0)">Logout</a>
       </li>
-      <li (click)="expand()" [class]="dropdownLi">
+      <li *ngIf="authService.isAuthenticated()" (click)="expand()" [class]="dropdownLi">
         <a class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown"
-         aria-haspopup="true" aria-expanded="false">Store</a>
+         aria-haspopup="true" aria-expanded="false" href="javascript:void(0)">Store</a>
           <div [class]="dropdownMenu" aria-labelledby="dropdown01">
-           <a class="dropdown-item" href="#">All Furniture</a>
-           <a class="dropdown-item" href="#">My Furniture</a>
-           <a class="dropdown-item" href="#">Create</a>
+           <a class="dropdown-item" routerLink="/furniture/all">All Furniture</a>
+           <a class="dropdown-item" routerLink="/furniture/my">My Furniture</a>
+           <a class="dropdown-item" routerLink="/furniture/create">Create</a>
           </div>
       </li>
     </ul>

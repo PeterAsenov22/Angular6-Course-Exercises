@@ -14,6 +14,12 @@ import { HomeComponent } from './home/home.component'
 import { AuthService } from './authentication/auth.service'
 
 import { JWTInterceptor, ErrorInterceptor } from './interceptors'
+import { CreateFurnitureComponent } from './furniture/create-furniture/create-furniture.component'
+import { AllFurnitureComponent } from './furniture/all-furniture/all-furniture.component'
+import { FurnitureDetailsComponent } from './furniture/furniture-details/furniture-details.component'
+import { MyFurnitureComponent } from './furniture/my-furniture/my-furniture.component'
+import { CustomMinDirective } from './directives/custom-min-validator.directive'
+import { CustomMaxDirective } from './directives/custom-max.validator.directive'
 
 
 @NgModule({
@@ -22,7 +28,13 @@ import { JWTInterceptor, ErrorInterceptor } from './interceptors'
     NavigationComponent,
     SigninComponent,
     SignupComponent,
-    HomeComponent
+    HomeComponent,
+    CreateFurnitureComponent,
+    AllFurnitureComponent,
+    FurnitureDetailsComponent,
+    MyFurnitureComponent,
+    CustomMinDirective,
+    CustomMaxDirective
   ],
   imports: [
     BrowserModule,

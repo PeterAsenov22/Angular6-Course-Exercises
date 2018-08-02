@@ -37,7 +37,7 @@ module.exports = new PassportLocalStrategy({
   }
 
   // create a token string
-  const token = jwt.sign(payload, 's0m3 r4nd0m str1ng')
+  const token = jwt.sign(payload, 's0m3 r4nd0m str1ng', {expiresIn: '1h'})
 
   return done(null, token)
 })
