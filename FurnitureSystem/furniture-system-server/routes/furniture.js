@@ -90,7 +90,7 @@ router.get('/details/:id', authCheck, (req, res) => {
   const furniture = furnitureData.findById(id)
 
   if (!furniture) {
-    return res.status(200).json({
+    return res.status(401).json({
       success: false,
       message: 'Entry does not exists!'
     })
