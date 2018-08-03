@@ -145,4 +145,63 @@ router.delete('/delete/:id', authCheck, (req, res) => {
   })
 })
 
+router.put('/edit/:id', authCheck, (req, res) => {
+  const id = req.params.id;
+  const user = req.user.email;
+  const furniture = req.body;
+
+  if (!furniture ||  !req.user.roles.includes('Admin')) {
+    return res.status(404).json({
+      success: false,
+      message: 'Furniture does not exists!'
+    })
+  }
+
+  const validationResult = validateFurnitureForm(furniture)
+  if (!validationResult.success) {
+    return res.status(400).json({
+      success: false,
+      message: validationResult.message,
+      errors: validationResult.errors
+    })
+  }
+
+  furnitureData.edit(id, furniture);
+  furniture.id = id;
+  return res.status(200).json({
+    success: true,
+    message: 'Furniture edited successfully!'
+  })
+})
+
+router.get('/:id',  authCheck, (req, res) => {
+  const id = req.params.id
+
+  const furniture = furnitureData.findById(id)
+
+  if (!furniture) {
+    return res.status(200).json({
+      success: false,
+      message: 'Entry does not exists!'
+    })
+  }
+
+  let response = {
+    id,
+    make: furniture.make,
+    model: furniture.model,
+    year: furniture.year,
+    description: furniture.description,
+    price: furniture.price,
+    image: furniture.image
+  }
+
+  if (furniture.material) {
+    response.material = furniture.material
+  }
+
+  res.status(200).json(response)
+})
+
+
 module.exports = router
