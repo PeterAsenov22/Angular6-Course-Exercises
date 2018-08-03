@@ -8,6 +8,8 @@ const allUrl = 'http://localhost:5000/furniture/all'
 const myFurnitureUrl = 'http://localhost:5000/furniture/mine'
 const detailsUrl = 'http://localhost:5000/furniture/details/'
 const deleteUrl = 'http://localhost:5000/furniture/delete/'
+const furnitureByIdUrl = 'http://localhost:5000/furniture/'
+const editFurnitureUrl = 'http://localhost:5000/furniture/edit/'
 
 @Injectable()
 export class FurnitureService {
@@ -31,5 +33,13 @@ export class FurnitureService {
 
   deleteFurniture (id: string) {
     return this.http.delete(deleteUrl + id)
+  }
+
+  getFurnitureById (id: string) {
+    return this.http.get<FurnitureModel>(furnitureByIdUrl + id)
+  }
+
+  editFurniture (id: string, model: FurnitureModel) {
+    return this.http.put(editFurnitureUrl + id, model)
   }
 }

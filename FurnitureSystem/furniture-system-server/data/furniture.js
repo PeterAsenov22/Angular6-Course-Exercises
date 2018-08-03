@@ -90,5 +90,10 @@ module.exports = {
   },
   delete: (id) => {
     delete furnitureData[id]
+  },
+  edit: (id, newItem) => {
+    newItem['id'] = id;
+    newItem['createdBy'] = furnitureData[id]['createdBy'];
+    furnitureData[id] = newItem;
   }
 }

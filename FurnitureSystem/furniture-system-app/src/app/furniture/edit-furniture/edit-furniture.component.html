@@ -1,0 +1,116 @@
+<div class="container">
+    <div class="row space-top">
+        <div class="col-md-12">
+            <h1>Edit Furniture</h1>
+            <p>Please fill all fields.</p>
+        </div>
+    </div>
+    <form #furnitureForm="ngForm" (ngSubmit)="edit(furnitureForm)">
+        <div class="row space-top">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="form-control-label" for="new-make">Make</label>
+                    <input 
+                      class="form-control" 
+                      id="new-make" 
+                      type="text"
+                      name="make"
+                      [(ngModel)]="bindingModel.make"
+                      #make="ngModel"
+                      required
+                      minlength="4">
+                    <div [hidden]="make.valid || make.pristine" class="form-control-feedback">
+                      Make must be at least 4 symbols long
+                    </div>
+                </div>
+                <div class="form-group has-success">
+                    <label class="form-control-label" for="new-model">Model</label>
+                    <input 
+                      class="form-control" 
+                      id="new-model" 
+                      type="text"
+                      name="model"
+                      [(ngModel)]="bindingModel.model"
+                      #model="ngModel"
+                      required
+                      minlength="4">
+                    <div [hidden]="model.valid || model.pristine" class="form-control-feedback">
+                      Model must be at least 4 symbols long
+                    </div>
+                </div>
+                <div class="form-group has-danger">
+                    <label class="form-control-label" for="new-year">Year</label>
+                    <input 
+                      class="form-control"
+                      id="new-year" 
+                      type="number"
+                      name="year"
+                      [(ngModel)]="bindingModel.year"
+                      #year="ngModel"
+                      required
+                      [customMin]="1950"
+                      [customMax]="2050">
+                    <div [hidden]="year.valid || year.pristine" class="form-control-feedback">
+                      Year must be between 1950 and 2050
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="new-description">Description</label>
+                    <input 
+                      class="form-control" 
+                      id="new-description" 
+                      type="text"
+                      name="description"
+                      [(ngModel)]="bindingModel.description"
+                      #description="ngModel"
+                      required
+                      minlength="11">
+                    <div [hidden]="description.valid || description.pristine" class="form-control-feedback">
+                      Description must be more than 10 symbols
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="form-control-label" for="new-price">Price</label>
+                    <input 
+                      class="form-control" 
+                      id="new-price" 
+                      type="number"
+                      name="price"
+                      [(ngModel)]="bindingModel.price"
+                      #price="ngModel"
+                      required
+                      [customMin]="0">
+                    <div [hidden]="price.valid || price.pristine" class="form-control-feedback">
+                      Price must be a positive number
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="new-image">Image URL</label>
+                    <input 
+                      class="form-control" 
+                      id="new-image" 
+                      type="text"
+                      name="image"
+                      [(ngModel)]="bindingModel.image"
+                      #image="ngModel"
+                      required>
+                    <div [hidden]="image.valid || image.pristine" class="form-control-feedback">
+                      Image URL is required
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="new-material">Material (optional)</label>
+                    <input 
+                      class="form-control" 
+                      id="new-material" 
+                      type="text"
+                      name="material"
+                      [(ngModel)]="bindingModel.material">
+                </div>
+                <input type="submit" class="btn btn-primary" value="Edit" [disabled]="!furnitureForm.valid" />
+            </div>
+        </div>
+    </form>
+  </div>

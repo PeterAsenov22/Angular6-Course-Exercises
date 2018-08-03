@@ -19,6 +19,8 @@
               <p>{{furniture.description}}</p>
               <div class="pull-right">
                 <a routerLink="/furniture/details/{{furniture.id}}" class="btn btn-info">Details</a>
+                <a *ngIf="authService.isAdmin()" routerLink="/furniture/edit/{{furniture.id}}" class="btn btn-warning">Edit</a>
+                <a *ngIf="authService.isAdmin()" (click)="deleteItem(furniture.id)" class="btn btn-danger">Delete</a>
               </div>
             </blockquote>
           </div>

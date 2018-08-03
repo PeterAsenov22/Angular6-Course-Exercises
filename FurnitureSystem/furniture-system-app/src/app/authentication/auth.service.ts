@@ -48,13 +48,13 @@ export class AuthService {
   }
 
   isAdmin () {
-    if (this.isTokenExpired(this.currentAuthtoken)) {
+    const decoded = jwt_decode(this.currentAuthtoken)
+    if (this.isTokenExpired(decoded)) {
       this.currentAuthtoken = null
       this.toastr.error('Invalid token', 'Warning!')
       return false
     }
 
-    const decoded = jwt_decode(this.currentAuthtoken)
     return decoded.isAdmin
   }
 

@@ -103,9 +103,7 @@ router.get('/details/:id', authCheck, (req, res) => {
     year: furniture.year,
     description: furniture.description,
     price: furniture.price,
-    image: furniture.image,
-    createdOn: furniture.createdOn,
-    likes: furniture.likes.length
+    image: furniture.image
   }
 
   if (furniture.material) {
