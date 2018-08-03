@@ -10,11 +10,17 @@ import { FurnitureService } from '../furniture.service'
 })
 export class MyFurnitureComponent implements OnInit {
   furnitures$: Observable<FurnitureModel[]>
+  pageSize = 3
+  currentPage = 1
 
   constructor(private furnitureService: FurnitureService) { }
 
   ngOnInit() {
     this.furnitures$ = this.furnitureService.getMyFurniture()
+  }
+
+  changePage (page) {
+    this.currentPage = page
   }
 
   deleteItem (id: string) {

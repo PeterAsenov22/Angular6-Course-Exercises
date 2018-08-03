@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app.routing'
 import { ToastrModule } from 'ngx-toastr'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AuthModule } from './authentication/auth.module'
-import { FurnitureModul } from './furniture/furniture.module'
+import { FurnitureModule } from './furniture/furniture.module'
 
 import { AppComponent } from './app.component'
 import { NavigationComponent } from './navigation/navigation.component'
@@ -28,7 +28,7 @@ import { JWTInterceptor, ErrorInterceptor } from './interceptors'
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     AuthModule,
-    FurnitureModul
+    FurnitureModule
   ],
   providers: [
     {

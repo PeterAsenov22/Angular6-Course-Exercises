@@ -7,7 +7,11 @@
   </div>
   <div *ngIf='furnitures$ | async as furnitures'>
     <div *ngIf="furnitures.length > 0; else notFound" class="row space-top">
-      <div *ngFor="let furniture of furnitures" class="col-md-4">
+      <div *ngFor="let furniture of furnitures | paginate: {
+        id: 'allFurniture',
+        itemsPerPage: pageSize,
+        currentPage: currentPage
+      }" class="col-md-4">
         <div class="card text-white bg-primary">
           <div class="card-body">
             <blockquote class="card-blockquote">
@@ -25,4 +29,16 @@
         <span>Currently there are no existing furnitures.</span>
     </ng-template>
   </div>
+  <pagination-controls
+    id="allFurniture"
+    (pageChange)="changePage($event)"
+    maxSize="9"
+    directionLinks="true"
+    autoHide="true"
+    previousLabel="Previous"
+    nextLabel="Next"
+    screenReaderPaginationLabel="Pagination"
+    screenReaderPageLabel="page"
+    screenReaderCurrentLabel="You're on page">
+  </pagination-controls>
 </div>
