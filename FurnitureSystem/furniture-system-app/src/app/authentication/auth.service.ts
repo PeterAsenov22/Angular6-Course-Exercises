@@ -47,6 +47,17 @@ export class AuthService {
     return this.currentAuthtoken === localStorage.getItem('authtoken')
   }
 
+  isAdmin () {
+    if (this.isTokenExpired(this.currentAuthtoken)) {
+      this.currentAuthtoken = null
+      this.toastr.error('Invalid token', 'Warning!')
+      return false
+    }
+
+    const decoded = jwt_decode(this.currentAuthtoken)
+    return decoded.isAdmin
+  }
+
   get authtoken () {
     return this.currentAuthtoken
   }
